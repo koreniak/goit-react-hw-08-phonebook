@@ -4,7 +4,7 @@ import { fetchContacts, patchContact } from 'redux/contacts/operations';
 import { ContForm, Input, SubmitButton, CloseButton, ModalContainer } from './EditForm.styled';
 import { GrClose } from 'react-icons/gr';
 
-const EditForm = ({ onClose, id }) => {
+const EditForm = ({ onClose, id, name, number }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
@@ -18,18 +18,21 @@ const EditForm = ({ onClose, id }) => {
         number: form.elements.number.value,
       })
     );
+    setTimeout(() => {
+      dispatch(fetchContacts())
+    }, 500);
     form.reset();
-    dispatch(fetchContacts());
   };
   
 
   return (
     <ModalContainer>
-      <CloseButton type="button" onClick={onClose}><GrClose/></CloseButton>
+      <CloseButton type="button" onClick={onClose}><GrClose /></CloseButton>
       <ContForm onSubmit={handleSubmit} autoComplete="off">
-      <label>
-        Name
+        <label>
+          Name
           <Input
+            defaultValue={name}
             type="text"
             name="name"
             placeholder="John Smith"
@@ -37,10 +40,11 @@ const EditForm = ({ onClose, id }) => {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-      </label>
-      <label>
-        Number
+        </label>
+        <label>
+          Number
           <Input
+            defaultValue={number}
             type="text"
             name="number"
             placeholder="012-345-6789"
@@ -48,16 +52,18 @@ const EditForm = ({ onClose, id }) => {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
-      </label>
-      <SubmitButton type="submit">Edit</SubmitButton>
-    </ContForm>
+        </label>
+        <SubmitButton type="submit">Edit</SubmitButton>
+      </ContForm>
     </ModalContainer>
-  )
+  );
 };
 
 EditForm.propTypes = {
   onClose: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
 };
 
-export default EditForm
+export default EditForm;

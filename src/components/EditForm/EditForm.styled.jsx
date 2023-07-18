@@ -81,8 +81,9 @@ export const CloseButton = styled.button`
 `;
 
 export const ModalContainer = styled.div`
-  border-radius: 8px;
+  border-radius: 4px;
   position: relative;
   background-color: #FFFFFF;
-  padding: 20px;
+  padding: 28px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
 `;

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { ModalOverlay, ModalField } from "./Modal.styled";
 import { createPortal } from "react-dom";
 
-const modalRoot = document.querySelector('#modal-root')
+const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ children, onClose }) => {
   useEffect(() => {
@@ -24,7 +24,7 @@ const Modal = ({ children, onClose }) => {
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
       onClose();
-    }
+    };
   };
 
   return createPortal(
@@ -37,7 +37,8 @@ const Modal = ({ children, onClose }) => {
 };
 
 Modal.propTypes = {
-  onClose: PropTypes.func.isRequired
+  children: PropTypes.element.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default Modal;

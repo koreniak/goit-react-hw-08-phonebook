@@ -19,7 +19,7 @@ const Title = styled.h2`
 
 const ContactsContainer = styled.div`
   display: inline-block;
-`
+`;
 
 const ContactsPages = () => {
   const dispatch = useDispatch();
@@ -42,6 +42,6 @@ const ContactsPages = () => {
       {!isLoading ? <ContactList /> : <Loader />}
     </ContactsContainer>
   );
-}
+};
 
-export default ContactsPages
+export default ContactsPages;

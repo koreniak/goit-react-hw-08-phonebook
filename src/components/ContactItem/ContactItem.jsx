@@ -18,7 +18,7 @@ const ContactItem = ({ name, number, id }) => {
 
   const openModal = () => {
     if (!showModal) {
-      setShowModal(true)
+      setShowModal(true);
     };
   };
 
@@ -30,7 +30,7 @@ const ContactItem = ({ name, number, id }) => {
         <EditButton type="button" onClick={openModal}>Edit</EditButton>
         <DeleteButton type="button" onClick={() => dispatch(deleteContact(id))}>Delete</DeleteButton>
       </div>
-      {showModal && <Modal onClose={closeModal}><EditForm id={id} onClose={closeModal} /></Modal>}
+      {showModal && <Modal onClose={closeModal}><EditForm id={id} name={name} number={number} onClose={closeModal} /></Modal>}
     </ContItem>
   );
 };
